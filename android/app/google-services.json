@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "396409577713",
+    "project_id": "tms-db-70579",
+    "storage_bucket": "tms-db-70579.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396409577713:android:b762172b9c9af36e3e0950",
+        "android_client_info": {
+          "package_name": "com.example.tms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuMnAydzTLgspz8LHrS0YQ4DtZldrMcU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
