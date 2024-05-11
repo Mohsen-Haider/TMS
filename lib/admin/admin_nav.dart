@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tms/admin/accident_admin.dart';
+import 'package:tms/admin/bus_admin.dart';
 import 'package:tms/admin/home_admin.dart';
 import 'package:tms/admin/msg_admin.dart';
 import 'package:tms/admin/profile_admin.dart';
-import 'package:tms/admin/routes_admin.dart';
+import 'package:tms/admin/employee_admin.dart';
 class AdminNav extends StatefulWidget {
   const AdminNav({super.key});
   @override
@@ -27,8 +27,8 @@ class _AdminNavState extends State<AdminNav> {
           // indicatorColor:  darkMode? Colors.black : Colors.white,
           destinations:const [
             NavigationDestination(icon: Icon(Icons.home, color: Colors.blue,), label:'Home'),
-            NavigationDestination(icon: Icon(Icons.bus_alert, color: Colors.blue,), label: 'Accident'),
-            NavigationDestination(icon: Icon(Icons.map, color: Colors.blue,), label: 'Routes'),
+            NavigationDestination(icon: Icon(Icons.directions_bus, color: Colors.blue,), label: 'Bus'),
+            NavigationDestination(icon: Icon(Icons.people, color: Colors.blue,), label: 'Employees'),
             NavigationDestination(icon: Icon(Icons.chat, color: Colors.blue,), label: 'Msg'),
             NavigationDestination(icon: Icon(Icons.person, color: Colors.blue,), label: 'profile'),
         ],
@@ -44,8 +44,8 @@ class AdminNavigationController extends GetxController{
 
  final screens = [
   const HomeAdmin(),
-  const AccidentAdmin(),
-  const RoutesAdmin(),
+  const BusAdmin(),
+  const EmployeeAdmin(),
   const MsgAdmin(),
   const ProfileAdmin()
   ];

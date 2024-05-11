@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AccidentAdmin extends StatefulWidget {
-  const AccidentAdmin({super.key});
+class BusAdmin extends StatefulWidget {
+  const BusAdmin({super.key});
 
   @override
-  State<AccidentAdmin> createState() => _AccidentAdminState();
+  State<BusAdmin> createState() => _BusAdminState();
 }
 
-class _AccidentAdminState extends State<AccidentAdmin> {
+class _BusAdminState extends State<BusAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class _AccidentAdminState extends State<AccidentAdmin> {
           onTap: () {
             FirebaseAuth.instance.signOut();
           },
-          child: const Text('Sign out form AccidentAdmin page'),),
+          child: const Text('Sign out form BusAdmin page'),),
       )
       ),
     );
