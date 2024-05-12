@@ -106,6 +106,8 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+
+
   void _signUp() async {
     String username = _usernameController.text;
     String email = _emailController.text;
