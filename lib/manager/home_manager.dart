@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tms/user_auth/login_page.dart';
 
 class HomeManager extends StatefulWidget {
   const HomeManager({super.key});
@@ -19,7 +21,8 @@ class _HomeManagerState extends State<HomeManager> {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              FirebaseAuth.instance.signOut();
+            FirebaseAuth.instance.signOut();
+            Get.offAll(()=>const LoginPage());
             },
           ),
         ],
@@ -29,6 +32,7 @@ class _HomeManagerState extends State<HomeManager> {
         child: GestureDetector(
           onTap: () {
             FirebaseAuth.instance.signOut();
+            Get.offAll(()=>const LoginPage());
           },
           child: const Text('Sign out form HomeManager page'),),
       )

@@ -4,6 +4,7 @@ import 'package:tms/global/loading.dart';
 import 'package:tms/global/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tms/user_auth/reset_password.dart';
 import 'package:tms/user_auth/sign_up_page.dart';
 import 'package:tms/global/form_widgets/from_container_widget.dart';
 import 'package:tms/user_auth/firebase_auth_services.dart';
@@ -92,14 +93,16 @@ class _LoginPageState extends State<LoginPage> {
                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account?"),
+                    Text("Forgot password?",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
                     SizedBox(width: 5,),
                     GestureDetector(
                       onTap: () {
                         // Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage())); // we replaced this in order to remove the arrow of going back '<---'
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
+                        // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SignUpPage()), (route) => false);
+                        Get.offAll(()=>const ResetPassword());
+
                       },
-                      child: Center(child: Text('Sign Up',style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),)),
+                      child: Center(child: Text('Reset password',style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),)),
                     ),
 
                   ],

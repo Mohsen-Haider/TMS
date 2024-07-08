@@ -16,7 +16,7 @@ void main() async {
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     getPages: [
-    GetPage(name: '/', page: () => TestCode()),
+    GetPage(name: '/', page: () => const LoginPage()),
     ],
   ));
 }

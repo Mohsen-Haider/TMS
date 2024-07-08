@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tms/user_auth/login_page.dart';
 
 class HomeDriver extends StatefulWidget {
   const HomeDriver({super.key});
@@ -19,7 +21,8 @@ class _HomeDriverState extends State<HomeDriver> {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              FirebaseAuth.instance.signOut();
+            FirebaseAuth.instance.signOut();
+            Get.offAll(()=>const LoginPage());
             },
           ),
         ],
@@ -29,6 +32,7 @@ class _HomeDriverState extends State<HomeDriver> {
         child: GestureDetector(
           onTap: () {
             FirebaseAuth.instance.signOut();
+            Get.offAll(()=>const LoginPage());
           },
           child: const Text('Sign out form HomeDriver page'),),
       )

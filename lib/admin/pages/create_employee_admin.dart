@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tms/global/form_widgets/from_container_widget.dart';
-import 'package:easy_stepper/easy_stepper.dart';
+// import 'package:easy_stepper/easy_stepper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:tms/global/toast.dart';
@@ -76,7 +76,7 @@ class CreateEmployeeAdminState extends State<CreateEmployeeAdmin> {
         { 
           final lastStep = currentStep == getSteps().length-1;
           // setState((){ if(!lastStep){ currentStep+=1;}else{ _submit();} });
-          setState((){ lastStep? _submit() : currentStep+=1; } );
+          setState((){ lastStep? _signUp() : currentStep+=1; } );
         },
         onStepCancel: () 
         {
@@ -245,12 +245,6 @@ Center(
       
 
 
-
-
-
-
-
-
 Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -307,14 +301,17 @@ Center(
 // ______________________________________________________________ inside class
   void _signUp() async {
     // String email = _emailController.text;
-    String availableId = _getNewId() as String;
-    String signUpEmail = '$availableId@ABC.com';
-    String password = _passowrdController.text;
-    User? user = await _auth.signUpWithEmailAndPassword(signUpEmail, password);
-    if (FirebaseAuth.instance.currentUser != null) {
+    // String availableId = _getNewId();
+    String availableId = '';
+    availableId = (await _getNewId())!;
+    String signUpEmail = '$availableId@abc.com';
+    String cprPass = _cprController.text;
+    User? user = await _auth.signUpWithEmailAndPassword(signUpEmail, cprPass);
+    // if (FirebaseAuth.instance.currentUser != null) {
+    if (user != null) {
     //  print('USER ID FROM THE SIGNUP METHOD: ${FirebaseAuth.instance.currentUser?.uid}');
-     String uid='';
-     uid= FirebaseAuth.instance.currentUser!.uid;
+    //  String userId='';
+    String? userId= user.uid;
     createEmployee(
     UserModel(
     name: _nameController.text,
@@ -332,7 +329,7 @@ Center(
     emergencyphone:  _emergencyPhoneController.text,
     licenseExpiry:  _licenseExpiryController.text,
     id: null,
-    uid: uid,
+    uid: userId,
       )
     );
 
@@ -341,7 +338,7 @@ Center(
     if(user != null){
       showToast(message: 'User successfully created', wtime: 4, bgcolor: Colors.green);
       // Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-      Get.to(() => const UserNav());
+      // Get.to(() => const UserNav());
     }else{
       showToast(message: 'Some error happened', wtime: 4, bgcolor: Colors.amber);
       
@@ -372,7 +369,7 @@ Center(
 }
 
 // ___________________________________________________________________________________ outhside class
-_submit() {
+_submit() async{
     print('Form is submitted');
     print('Note : submit the form here and create a method to clear all the fields and show notification and redirect to another page');
 
@@ -450,7 +447,7 @@ static UserModel fromSnapshot(DocumentSnapshot<Map<String,dynamic>>snapshot){
   return UserModel(
     id: snapshot['id'],
     uid: snapshot['uid'],
-    name: snapshot['username'],
+    name: snapshot['name'],
     address: snapshot['address'],
     dateOfBirth: snapshot['age'],
     cpr: snapshot['cpr'],
